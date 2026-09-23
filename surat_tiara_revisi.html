@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>For you "Tiara Anggraeni"</title><style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;overflow:hidden;font-family:Arial,sans-serif;background:#087dcc;color:#fff}.slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:25px;opacity:0;transform:translateX(100%);transition:.7s;pointer-events:none}.slide.active{opacity:1;transform:translateX(0);pointer-events:auto}.bg{position:absolute;inset:0;background:linear-gradient(145deg,#0573c8,#1dc7e9,#528df5)}.star{position:absolute;width:5px;height:5px;background:#fff;border-radius:50%;animation:twinkle 2s infinite alternate}.s1{top:12%;left:12%}.s2{top:22%;right:15%}.s3{bottom:20%;left:18%}.s4{bottom:13%;right:22%}.content{width:min(92vw,520px);text-align:center;position:relative;z-index:2}.envelope{font-size:95px;animation:float 2s infinite}.name{font-size:26px;font-weight:bold;color:#fff176}h1{font-size:39px;margin:12px 0 5px}.card{background:linear-gradient(145deg,#9eeaff,#68d8ff,#9cf5dc);color:#06456f;padding:28px 24px;border-radius:22px;box-shadow:0 18px 50px #004c7070;border:2px solid #ffffff66}.card h2{color:#075da0;margin-top:0}.letter{text-align:left;white-space:pre-line;line-height:1.8}.btn{border:0;border-radius:30px;padding:14px 25px;margin-top:18px;background:linear-gradient(90deg,#ffe45c,#7fffd4);color:#07558c;font-weight:bold;font-size:16px;box-shadow:0 8px 25px #004c7070}.bigflower{font-size:90px;animation:beat 1.2s infinite}.end p{line-height:1.8}.end h2{color:#fff176}@keyframes float{50%{transform:translateY(-15px)}}@keyframes beat{50%{transform:scale(1.2)}}@keyframes twinkle{from{opacity:.2}to{opacity:1}}
+
+/* enhanced animation */
+.slide.leaving{transform:translateX(-100%);opacity:0}
+.content{animation:contentIn .8s both}
+.slide:not(.active) .content{animation:none}
+@keyframes contentIn{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+.paper3d{perspective:900px}
+.card{transform-style:preserve-3d;animation:cardFloat 4s ease-in-out infinite}
+@keyframes cardFloat{50%{transform:translateY(-5px) rotateX(1deg)}}
+.flower{position:fixed;top:-40px;font-size:22px;z-index:10;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{0%{transform:translate3d(0,-40px,0) rotate(0deg);opacity:0}10%{opacity:1}100%{transform:translate3d(var(--drift),110vh,0) rotate(540deg);opacity:.9}}
+.envelope.open{animation:openEnv 1s both}
+@keyframes openEnv{0%{transform:scale(1) rotate(0)}45%{transform:scale(1.18) rotate(-5deg)}100%{transform:scale(.92) rotate(0);opacity:.85}}
+.cursor{display:inline-block;width:2px;height:1em;background:#075da0;margin-left:3px;vertical-align:-2px;animation:blink .7s infinite}
+@keyframes blink{50%{opacity:0}}
+.progress{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:7px}
+.dot{width:8px;height:8px;border-radius:50%;background:#ffffff55;transition:.3s}.dot.on{background:#fff176;transform:scale(1.25)}
+</style></head><body><div class="progress"><i class="dot on"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+<div class="slide active" id="s1"><div class="bg"></div><i class="star s1"></i><i class="star s2"></i><i class="star s3"></i><i class="star s4"></i><div class="content"><div class="envelope">💌</div><h1>For you</h1><div class="name">"Tiara Anggraeni"</div><p>Ada sesuatu yang ingin aku sampaikan...</p><button class="btn" onclick="next()">Buka Surat 🌷</button></div></div>
+<div class="slide" id="s2"><div class="bg"></div><div class="content"><div style="font-size:65px">🌷</div><div class="card"><h2>Hai Tiara</h2><p id="t2" class="letter"></p></div><button class="btn" onclick="next()">Lanjut 🌷</button></div></div>
+<div class="slide" id="s3"><div class="bg"></div><div class="content"><div class="card"><h2>kenapa bikin kayak gini</h2><p id="t3" class="letter"></p></div><button class="btn" onclick="next()">Masih ada satu lagi... 🌷</button></div></div>
+<div class="slide" id="s4"><div class="bg"></div><div class="content"><div style="font-size:70px">🌷</div><div class="card"><h2>Jadi...</h2><p class="letter">yaudaa deh aku ngasih nya sekarang ajaa. yaa walaupun aku gatau kita bakal deket lagi atau ngga. kalau misalnya kita gabisa deket lagi,anggep aja ini sebagai hadiah pertama & terakhir dari aku.</p></div><button class="btn" onclick="next()">Pesan terakhir 🌷</button></div></div>
+<div class="slide" id="s5"><div class="bg"></div><div class="content end"><div class="bigflower">🌷</div><h2>Last message</h2><div class="card"><p>Thank you for everything. Even though our story lasted only a few months, I am happy to have been with you. If our story were to have a second season... I would choose your smile to be mine. Could you smile at me in the second chapter of our story? I will be waiting for that smile...</p></div><button class="btn" onclick="restart()">Baca Lagi ↻</button></div></div>
+<script>
+let page=1;
+const texts={
+2:`apa kabar? kamu pasti heran kenapa aku bikin hal hal ga jelas kayak gini.. iyaa aku juga sama heran, kenapa yaa aku mau bikin sesuatu kayak gini. `,
+3:`jadi kamu inget ga waktu aku bilang ada rencana setelah kamu tka? nahh sebenernya ini tuh salah satu dari rencana aku.. ngasih kamu bucket+surat kayak gini buat tanda selamat.
+
+tapi karna kamu waktu itu bilang gabisa deket lagi, aku jadi mikir gimana yaa caranya biar ga gagal`,
+4:`yaudaa deh aku ngasih nya sekarang ajaa. yaa walaupun aku gatau kita bakal deket lagi atau ngga. kalau misalnya kita gabisa deket lagi,anggep aja ini sebagai hadiah pertama & terakhir dari aku.`
+};
+let typed={2:false,3:false,4:false};
+
+function updateDots(){
+ document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===page-1));
+}
+function show(n){
+ const old=document.getElementById('s'+page);
+ old.classList.remove('active');
+ old.classList.add('leaving');
+ setTimeout(()=>old.classList.remove('leaving'),750);
+ page=n;
+ const target=document.getElementById('s'+n);
+ target.classList.add('active');
+ updateDots();
+ target.querySelector('.content').style.animation='none';
+ void target.querySelector('.content').offsetWidth;
+ target.querySelector('.content').style.animation='';
+ if(n===2||n===3||n===4){
+   if(!typed[n]) typeText(n,texts[n]);
+ }
+ flowers(n===5?18:7);
+}
+function next(){if(page<5)show(page+1)}
+function restart(){show(1)}
+function typeText(n,text){
+ typed[n]=true;
+ const el=document.getElementById('t'+n);
+ el.textContent='';
+ let i=0;
+ const cursor=document.createElement('span'); cursor.className='cursor'; el.appendChild(cursor);
+ (function type(){
+   if(i<text.length){
+     cursor.before(document.createTextNode(text[i++]));
+     setTimeout(type,30);
+   } else setTimeout(()=>cursor.remove(),1200);
+ })();
+}
+function flowers(count){
+ for(let i=0;i<count;i++){
+   const f=document.createElement('div');
+   f.className='flower';
+   f.textContent=['🌷','🪻','🌼','💠'][Math.floor(Math.random()*4)];
+   f.style.left=Math.random()*100+'vw';
+   f.style.setProperty('--drift',(Math.random()*180-90)+'px');
+   f.style.animationDuration=(4+Math.random()*4)+'s';
+   f.style.animationDelay=(Math.random()*1.2)+'s';
+   document.body.appendChild(f);
+   setTimeout(()=>f.remove(),9000);
+ }
+}
+updateDots();
+</script></body></html>
